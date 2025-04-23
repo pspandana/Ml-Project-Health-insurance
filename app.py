@@ -34,7 +34,9 @@ with st.form("prediction_form"):
     with col2:
         smoking_status = st.selectbox("Smoking Status", ["No Smoking", "Regular", "Occasional"])
         employment_status = st.selectbox("Employment Status", ["Salaried", "Self-Employed", "Freelancer"])
-        income_lakhs = st.number_input("Annual Income (in lakhs)", min_value=0.0, max_value=100.0, value=5.0)
+        income_usd = st.number_input("Annual Income (USD)", min_value=0.0, max_value=1000000.0, value=50000.0)
+        # Convert USD to lakhs (1 lakh = 100,000 INR, assuming 1 USD = 83 INR)
+        income_lakhs = (income_usd / 83.0) / 100000.0
         medical_history = st.selectbox("Medical History", 
                                      ["No Disease", "Diabetes", "Heart Disease", "High Blood Pressure", "Thyroid"])
         insurance_plan = st.selectbox("Insurance Plan", ["Bronze", "Silver", "Gold"])
@@ -77,7 +79,9 @@ if submitted:
         prediction = predictor.predict(input_data)
         
         # Display prediction
-        st.success(f"Estimated Annual Premium: ₹{prediction:,.2f}")
+        # Convert prediction from INR to USD (assuming 1 USD = 83 INR)
+        premium_usd = prediction / 83.0
+        st.success(f"Estimated Annual Premium: ${premium_usd:,.2f} (₹{prediction:,.2f})")
         
         # Add some context about the prediction
         st.info("""
