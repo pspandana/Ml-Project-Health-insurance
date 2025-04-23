@@ -16,14 +16,19 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Virtual Environment
 venv/
 ENV/
 .venv/
+env.bak/
+venv.bak/
 
 # IDE
 .idea/
@@ -38,3 +43,43 @@ ENV/
 # System Files
 .DS_Store
 Thumbs.db
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Logs and databases
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Environment files
+.env
+.python-version
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# Build and documentation
+docs/_build/
+.pybuilder/
+target/
+cython_debug/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
